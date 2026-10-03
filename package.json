@@ -1,0 +1,24 @@
+{
+  "name": "typescript-ascii-converter",
+  "version": "1.0.0",
+  "description": "A Typescript Module that is a Hexadecimal - Binary - ASCII converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vai-school/Typescript-ASCII-Converter.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/vai-school/Typescript-ASCII-Converter/issues"
+  },
+  "homepage": "https://github.com/vai-school/Typescript-ASCII-Converter#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
