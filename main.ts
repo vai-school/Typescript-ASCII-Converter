@@ -18,7 +18,7 @@ const readline = createInterface({
 while (running) {
 
     const input = await readline.question(
-        "\nEnter a value you want to covert or 0 to quit: "
+        "\nEnter a value you want to convert or 0 to quit: "
     );
 
     // Exit the program
