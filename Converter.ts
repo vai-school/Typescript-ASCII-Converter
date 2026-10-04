@@ -37,10 +37,6 @@ export class Converter {
         for (const value of values) {
             const decimal = parseInt(value, 16);
 
-            if (Number.isNaN(decimal)) {
-                throw new Error("Invalid hexadecimal value.");
-            }
-
             output += String.fromCharCode(decimal);
         }
 
