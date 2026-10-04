@@ -1,32 +1,96 @@
-// import classes here
-import { ASCII } from "./ASCII.js";
-import { Hex } from "./Hex.js";
-import { Binary } from "./Binary.js";
-import { createInterface } from "node:readline";
+import { Converter } from "./Converter.js";
+import { createInterface } from "node:readline/promises";
 import { stdin, stdout } from "node:process";
 
-// The object oriented programming portion, these are the classes
-const ascii = new ASCII();
-const hex = new Hex();
-const binary = new Binary();
+// Creates the converter
+const converter = new Converter();
 
-// allows the "talking" to the terminal
+// Keeps the program running
+let running = true;
+
+// Allows the program to talk to the terminal
 const readline = createInterface({
-  input: stdin,
-  output: stdout,
+    input: stdin,
+    output: stdout,
 });
 
-readline.question("Enter a word or sentence: ", (input) => {
-  readline.question(
-    "Choose conversion:\n 1. Hexadecimal\n 2. Binary\n> ",
-    (choice) => {
-      if (choice === "1") {
-        console.log("Hexadecimal selected");
-      } else if (choice === "2") {
-        console.log("Binary selected");
-      }
+// Main program loop
+while (running) {
 
-      readline.close();
+    const input = await readline.question(
+        "\nEnter a value you want to covert or 0 to quit: "
+    );
+
+    // Exit the program
+    if (input === "0") {
+        running = false;
+        continue;
     }
-  );
-});
+
+    const inFormat = await readline.question(
+        "\nWhat is the value format? Choose input format:\n" +
+        "1. ASCII\n" +
+        "2. Hexadecimal\n" +
+        "3. Binary\n" +
+        "> "
+    );
+
+    const outFormat = await readline.question(
+        "\nChoose output format:\n" +
+        "1. ASCII\n" +
+        "2. Hexadecimal\n" +
+        "3. Binary\n" +
+        "> "
+    );
+
+    // ASCII to Hex
+    if (inFormat === "1" && outFormat === "2") {
+
+        const result = converter.toHex(input);
+
+        console.log("\nResult:", result.join(" "));
+    }
+
+    // ASCII to Binary
+    else if (inFormat === "1" && outFormat === "3") {
+
+        const result = converter.toBinary(input);
+
+        console.log("\nResult:", result.join(" "));
+    }
+
+    // Hex to ASCII
+    else if (inFormat === "2" && outFormat === "1") {
+
+        const result = converter.hexToASCII(input);
+
+        console.log("\nResult:", result);
+    }
+
+    // Hex to Binary
+    else if (inFormat === "2" && outFormat === "3") {
+
+        const result = converter.hexToBinary(input);
+
+        console.log("\nResult:", result.join(" "));
+    }
+
+    // Binary to ASCII
+    else if (inFormat === "3" && outFormat === "1") {
+
+        const result = converter.binaryToASCII(input);
+
+        console.log("\nResult:", result);
+    }
+
+    // Binary to Hex
+    else if (inFormat === "3" && outFormat === "2") {
+
+        const result = converter.binaryToHex(input);
+
+        console.log("\nResult:", result.join(" "));
+    }
+}
+
+// Close the terminal
+readline.close();
