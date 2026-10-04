@@ -11,7 +11,7 @@ export class Converter {
         return output;
     }
 
-    // ASCII -> Hexadecimal
+    // ASCII to Hexadecimal
     toHex(input: string): string[] {
         const decimal = this.toDecimal(input);
 
@@ -20,7 +20,7 @@ export class Converter {
         );
     }
 
-    // ASCII -> Binary
+    // ASCII to Binary
     toBinary(input: string): string[] {
         const decimal = this.toDecimal(input);
 
@@ -29,7 +29,7 @@ export class Converter {
         );
     }
 
-    // Hexadecimal -> ASCII
+    // Hexadecimal to ASCII
     hexToASCII(input: string): string {
         const values = input.split(" ");
         let output = "";
@@ -43,7 +43,7 @@ export class Converter {
         return output;
     }
 
-    // Binary -> ASCII
+    // Binary to ASCII
     binaryToASCII(input: string): string {
         const values = input.split(" ");
         let output = "";
@@ -58,14 +58,13 @@ export class Converter {
         return output;
     }
 
-    // Hexadecimal -> Binary
+    // Hexadecimal to Binary
     hexToBinary(input: string): string[] {
         const values = input.split(" ");
         const output: string[] = [];
 
         for (const value of values) {
             const decimal = parseInt(value, 16);
-
 
             output.push(
                 decimal.toString(2).padStart(8, "0")
@@ -75,7 +74,7 @@ export class Converter {
         return output;
     }
 
-    // Binary -> Hexadecimal
+    // Binary to Hexadecimal
     binaryToHex(input: string): string[] {
         const values = input.split(" ");
         const output: string[] = [];
